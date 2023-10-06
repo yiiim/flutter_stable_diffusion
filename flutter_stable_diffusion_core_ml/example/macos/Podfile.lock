@@ -1,0 +1,38 @@
+PODS:
+  - flutter_stable_diffusion_core_ml (0.0.1):
+    - Flutter
+    - FlutterMacOS
+    - platform_object_channel_foundation
+  - FlutterMacOS (1.0.0)
+  - path_provider_foundation (0.0.1):
+    - Flutter
+    - FlutterMacOS
+  - platform_object_channel_foundation (0.0.1):
+    - Flutter
+    - FlutterMacOS
+
+DEPENDENCIES:
+  - flutter_stable_diffusion_core_ml (from `Flutter/ephemeral/.symlinks/plugins/flutter_stable_diffusion_core_ml/darwin`)
+  - FlutterMacOS (from `Flutter/ephemeral`)
+  - path_provider_foundation (from `Flutter/ephemeral/.symlinks/plugins/path_provider_foundation/darwin`)
+  - platform_object_channel_foundation (from `Flutter/ephemeral/.symlinks/plugins/platform_object_channel_foundation/darwin`)
+
+EXTERNAL SOURCES:
+  flutter_stable_diffusion_core_ml:
+    :path: Flutter/ephemeral/.symlinks/plugins/flutter_stable_diffusion_core_ml/darwin
+  FlutterMacOS:
+    :path: Flutter/ephemeral
+  path_provider_foundation:
+    :path: Flutter/ephemeral/.symlinks/plugins/path_provider_foundation/darwin
+  platform_object_channel_foundation:
+    :path: Flutter/ephemeral/.symlinks/plugins/platform_object_channel_foundation/darwin
+
+SPEC CHECKSUMS:
+  flutter_stable_diffusion_core_ml: 996f5a9454648f379509627c59af1b23f573d761
+  FlutterMacOS: 8f6f14fa908a6fb3fba0cd85dbd81ec4b251fb24
+  path_provider_foundation: 29f094ae23ebbca9d3d0cec13889cd9060c0e943
+  platform_object_channel_foundation: aeb00a626b0f22f1f7e143b7c47d4a9ee256b58a
+
+PODFILE CHECKSUM: 31ab3a79e195596ab2ca8e40d6236987a8a09e1a
+
+COCOAPODS: 1.12.0

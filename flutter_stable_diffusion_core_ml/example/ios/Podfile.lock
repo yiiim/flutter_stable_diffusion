@@ -1,0 +1,44 @@
+PODS:
+  - Flutter (1.0.0)
+  - flutter_stable_diffusion_core_ml (0.0.1):
+    - Flutter
+    - FlutterMacOS
+    - platform_object_channel_foundation
+  - integration_test (0.0.1):
+    - Flutter
+  - path_provider_foundation (0.0.1):
+    - Flutter
+    - FlutterMacOS
+  - platform_object_channel_foundation (0.0.1):
+    - Flutter
+    - FlutterMacOS
+
+DEPENDENCIES:
+  - Flutter (from `Flutter`)
+  - flutter_stable_diffusion_core_ml (from `.symlinks/plugins/flutter_stable_diffusion_core_ml/darwin`)
+  - integration_test (from `.symlinks/plugins/integration_test/ios`)
+  - path_provider_foundation (from `.symlinks/plugins/path_provider_foundation/darwin`)
+  - platform_object_channel_foundation (from `.symlinks/plugins/platform_object_channel_foundation/darwin`)
+
+EXTERNAL SOURCES:
+  Flutter:
+    :path: Flutter
+  flutter_stable_diffusion_core_ml:
+    :path: ".symlinks/plugins/flutter_stable_diffusion_core_ml/darwin"
+  integration_test:
+    :path: ".symlinks/plugins/integration_test/ios"
+  path_provider_foundation:
+    :path: ".symlinks/plugins/path_provider_foundation/darwin"
+  platform_object_channel_foundation:
+    :path: ".symlinks/plugins/platform_object_channel_foundation/darwin"
+
+SPEC CHECKSUMS:
+  Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
+  flutter_stable_diffusion_core_ml: dc5c203a1cfe0ceb9d5cd4e2d4711231eeb4e8e6
+  integration_test: 13825b8a9334a850581300559b8839134b124670
+  path_provider_foundation: 29f094ae23ebbca9d3d0cec13889cd9060c0e943
+  platform_object_channel_foundation: aeb00a626b0f22f1f7e143b7c47d4a9ee256b58a
+
+PODFILE CHECKSUM: fd10430bbbbe0d32705d39297f250dfc033d998e
+
+COCOAPODS: 1.12.0
