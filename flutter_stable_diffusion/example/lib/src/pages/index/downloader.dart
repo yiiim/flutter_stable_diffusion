@@ -88,7 +88,7 @@ class IndexPageModelDownloader with DependencyInjectionService, MvcService {
           } else {
             downloadProgressText = "${count ~/ 1024}KB/${total ~/ 1024}KB";
           }
-          $("#downloadProgressText").update();
+          querySelector("#downloadProgressText")?.update();
         },
         onUnzipProgress: (progress) {
           unzipProgressText = "${(progress * 100).toStringAsFixed(0)}%";
@@ -100,7 +100,7 @@ class IndexPageModelDownloader with DependencyInjectionService, MvcService {
             _cancelUnzipCompleter = Completer();
             update();
           } else {
-            $("#unzipProgressText").update();
+            querySelector("#unzipProgressText")?.update();
           }
         },
         cancelToken: _downloadCancelToken,

@@ -1,6 +1,6 @@
 name: flutter_stable_diffusion
 description: A Flutter plugin for generate 'Stable Diffusion' image.
-version: 1.0.0
+version: 1.0.0+2
 homepage: https://github.com/yiiim/flutter_stable_diffusion/tree/master/flutter_stable_diffusion
 
 environment:

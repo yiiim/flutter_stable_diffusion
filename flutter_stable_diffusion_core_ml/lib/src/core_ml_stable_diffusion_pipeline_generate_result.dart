@@ -1,6 +1,7 @@
 import 'package:flutter_stable_diffusion_platform_interface/flutter_stable_diffusion_platform_interface.dart';
 
-class CoreMlStableDiffusionPipelineGenerateResult extends PlatformStableDiffusionPipelineGenerateResult {
+class CoreMlStableDiffusionPipelineGenerateResult
+    extends PlatformStableDiffusionPipelineGenerateResult {
   CoreMlStableDiffusionPipelineGenerateResult({
     this.imageData,
     this.isCancelled = false,

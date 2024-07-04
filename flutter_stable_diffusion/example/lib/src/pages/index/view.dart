@@ -8,7 +8,7 @@ import 'package:flutter_stable_diffusion_example/src/pages/index/downloader.dart
 import 'package:flutter_stable_diffusion_example/src/pages/index/generator.dart';
 import 'package:flutter_stable_diffusion_example/src/pages/index/loader.dart';
 
-class IndexPage extends MvcView<IndexPageController, dynamic> {
+class IndexPage extends MvcView<IndexPageController> {
   Widget buildInputWidgets(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,

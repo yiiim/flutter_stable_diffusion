@@ -32,11 +32,14 @@ dependencies:
   path_provider: ^2.0.10
   path: ^1.8.0
   dio: ^5.0.0
-  flutter_mvc: ^3.0.1+1
+  flutter_mvc: ^4.1.0
   json_serializable: ^6.4.0
   json_annotation: ^4.8.1
   archive: ^3.4.2
 
+dependency_overrides:
+  flutter_stable_diffusion_core_ml:
+    path: ../../flutter_stable_diffusion_core_ml
 dev_dependencies:
   integration_test:
     sdk: flutter

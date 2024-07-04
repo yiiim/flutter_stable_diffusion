@@ -2,11 +2,13 @@
 
 [![pub package](https://img.shields.io/pub/v/flutter_stable_diffusion.svg)](https://pub.dev/packages/flutter_stable_diffusion)
 
-A Flutter plugin for create channel for platform object instance and dart object instance
+A Flutter plugin for generate 'Stable Diffusion' image.
 
 |             | iOS   | macOS    |
 |-------------|-------|----------|
 | **Support** | 16.2+ | 13.1+    |
+
+If you are able to provide implementations for other platforms, contributions via Pull Requests are welcome.
 
 ## Usage
 

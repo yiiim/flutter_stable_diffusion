@@ -5,7 +5,8 @@ enum CoreMlStableDiffusionScheduler {
   dpmSolverMultistepScheduler,
 }
 
-class CoreMlStableDiffusionPipelineGenerateParams extends PlatformStableDiffusionPipelineGenerateParams {
+class CoreMlStableDiffusionPipelineGenerateParams
+    extends PlatformStableDiffusionPipelineGenerateParams {
   CoreMlStableDiffusionPipelineGenerateParams({
     required super.prompt,
     super.negativePrompt = "",

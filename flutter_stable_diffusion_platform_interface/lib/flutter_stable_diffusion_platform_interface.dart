@@ -2,12 +2,16 @@ library flutter_stable_diffusion_platform_interface;
 
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
+/// params for create [PlatformStableDiffusionPipeline]
 class PlatformStableDiffusionPipelineCreationParams {
-  const PlatformStableDiffusionPipelineCreationParams({required this.modelPath});
+  const PlatformStableDiffusionPipelineCreationParams(
+      {required this.modelPath});
 
+  /// stable diffusion model path
   final String modelPath;
 }
 
+/// params for [PlatformStableDiffusionPipeline.generate]
 class PlatformStableDiffusionPipelineGenerateParams {
   const PlatformStableDiffusionPipelineGenerateParams({
     required this.prompt,
@@ -24,30 +28,57 @@ class PlatformStableDiffusionPipelineGenerateParams {
   final double guidanceScale;
 }
 
+/// result for [PlatformStableDiffusionPipeline.generate]
 abstract class PlatformStableDiffusionPipelineGenerateResult {
+  /// message
   String? get message;
+
+  /// is success
   bool get isSuccess;
+
+  /// is cancelled
   bool get isCancelled;
+
+  /// image data
   List<int>? get imageData;
 }
 
+/// cancel token for [PlatformStableDiffusionPipeline.generate]
 abstract class PlatformStableDiffusionPipelineGenerateCancelToken {
+  /// cancel generate
   Future cancel();
 }
 
+/// progress for [PlatformStableDiffusionPipeline.generate]
 class PlatformStableDiffusionPipelineGenerateProgress {
-  PlatformStableDiffusionPipelineGenerateProgress({required this.step, required this.stepCount});
+  PlatformStableDiffusionPipelineGenerateProgress({
+    required this.step,
+    required this.stepCount,
+    this.currentImages,
+  });
   final int step;
   final int stepCount;
+  final List<List<int>>? currentImages;
 }
 
+/// pipeline for stable diffusion
 abstract class PlatformStableDiffusionPipeline {
+  /// load resources
   Future loadResources();
+
+  /// generate images
+  ///
+  /// [params] params for generate
+  /// [onProgress] callback for progress
+  /// [cancelToken] cancel token
   Future<PlatformStableDiffusionPipelineGenerateResult> generate(
     PlatformStableDiffusionPipelineGenerateParams params, {
-    void Function(PlatformStableDiffusionPipelineGenerateProgress progress)? onProgress,
+    void Function(PlatformStableDiffusionPipelineGenerateProgress progress)?
+        onProgress,
     PlatformStableDiffusionPipelineGenerateCancelToken? cancelToken,
   });
+
+  /// dispose
   Future dispose();
 }
 
@@ -59,13 +90,19 @@ abstract class StableDiffusionPlatformInterface extends PlatformInterface {
 
   static set instance(StableDiffusionPlatformInterface? instance) {
     if (instance == null) {
-      throw AssertionError('Platform interfaces can only be set to a non-null instance');
+      throw AssertionError(
+          'Platform interfaces can only be set to a non-null instance');
     }
 
     PlatformInterface.verify(instance, _token);
     _instance = instance;
   }
 
-  PlatformStableDiffusionPipeline createPlatformPipeline(PlatformStableDiffusionPipelineCreationParams params);
-  PlatformStableDiffusionPipelineGenerateCancelToken createPlatformPipelineGenerateCancelToken();
+  /// create [PlatformStableDiffusionPipeline]
+  PlatformStableDiffusionPipeline createPlatformPipeline(
+      PlatformStableDiffusionPipelineCreationParams params);
+
+  /// create [PlatformStableDiffusionPipelineGenerateCancelToken]
+  PlatformStableDiffusionPipelineGenerateCancelToken
+      createPlatformPipelineGenerateCancelToken();
 }

@@ -20,10 +20,14 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   String _status = 'idle';
-  late final TextEditingController _promptTextController = TextEditingController();
-  late final TextEditingController _negativePromptTextController = TextEditingController();
-  late final TextEditingController _stepCountTextController = TextEditingController(text: "20");
-  late final TextEditingController _scaleTextController = TextEditingController(text: "7.5");
+  late final TextEditingController _promptTextController =
+      TextEditingController();
+  late final TextEditingController _negativePromptTextController =
+      TextEditingController();
+  late final TextEditingController _stepCountTextController =
+      TextEditingController(text: "20");
+  late final TextEditingController _scaleTextController =
+      TextEditingController(text: "7.5");
   List<int>? _imageData;
   bool _isLoaded = false;
   bool _generateing = false;
@@ -39,7 +43,9 @@ class _MyAppState extends State<MyApp> {
   }
 
   void tapGenerate() async {
-    if (_pipline == null || _isLoaded == false || _promptTextController.text.isEmpty) {
+    if (_pipline == null ||
+        _isLoaded == false ||
+        _promptTextController.text.isEmpty) {
       return;
     }
     try {
@@ -49,7 +55,8 @@ class _MyAppState extends State<MyApp> {
         _status = 'generating';
       });
       _generateProgressValue.value = 'generating';
-      _cancelToken = StableDiffusionPlatformInterface.instance!.createPlatformPipelineGenerateCancelToken();
+      _cancelToken = StableDiffusionPlatformInterface.instance!
+          .createPlatformPipelineGenerateCancelToken();
       var result = await _pipline!.generate(
         PlatformStableDiffusionPipelineGenerateParams(
           prompt: _promptTextController.text,
@@ -58,7 +65,8 @@ class _MyAppState extends State<MyApp> {
           guidanceScale: double.parse(_scaleTextController.text),
         ),
         onProgress: (progress) async {
-          _generateProgressValue.value = "${progress.step}/${progress.stepCount}";
+          _generateProgressValue.value =
+              "${progress.step}/${progress.stepCount}";
         },
         cancelToken: _cancelToken,
       );
@@ -154,12 +162,14 @@ class _MyAppState extends State<MyApp> {
                 alignment: Alignment.centerLeft,
                 child: TextField(
                   controller: _stepCountTextController,
-                  keyboardType: const TextInputType.numberWithOptions(decimal: false),
+                  keyboardType:
+                      const TextInputType.numberWithOptions(decimal: false),
                   onChanged: (text) {
                     if (text.isEmpty) {
                       _stepCountTextController.value = const TextEditingValue(
                         text: "1",
-                        selection: TextSelection(baseOffset: 0, extentOffset: 1),
+                        selection:
+                            TextSelection(baseOffset: 0, extentOffset: 1),
                       );
                     }
                   },
@@ -187,12 +197,14 @@ class _MyAppState extends State<MyApp> {
                 alignment: Alignment.centerLeft,
                 child: TextField(
                   controller: _scaleTextController,
-                  keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                  keyboardType:
+                      const TextInputType.numberWithOptions(decimal: true),
                   onChanged: (text) {
                     if (text.isEmpty) {
                       _scaleTextController.value = const TextEditingValue(
                         text: "1",
-                        selection: TextSelection(baseOffset: 0, extentOffset: 1),
+                        selection:
+                            TextSelection(baseOffset: 0, extentOffset: 1),
                       );
                     }
                   },
@@ -211,13 +223,15 @@ class _MyAppState extends State<MyApp> {
           children: [
             Expanded(
               child: TextButton(
-                onPressed: !_generateing && !_cancelGenerateing ? tapGenerate : null,
+                onPressed:
+                    !_generateing && !_cancelGenerateing ? tapGenerate : null,
                 child: const Text("Generate"),
               ),
             ),
             Expanded(
               child: TextButton(
-                onPressed: _generateing && !_cancelGenerateing ? tapCancel : null,
+                onPressed:
+                    _generateing && !_cancelGenerateing ? tapCancel : null,
                 child: const Text("Cancel"),
               ),
             ),
@@ -256,8 +270,10 @@ class _MyAppState extends State<MyApp> {
                       });
                       await _cancelToken?.cancel();
                       await _pipline?.dispose();
-                      _pipline = StableDiffusionPlatformInterface.instance!.createPlatformPipeline(
-                        PlatformStableDiffusionPipelineCreationParams(modelPath: result),
+                      _pipline = StableDiffusionPlatformInterface.instance!
+                          .createPlatformPipeline(
+                        PlatformStableDiffusionPipelineCreationParams(
+                            modelPath: result),
                       );
                       await _pipline?.loadResources();
                       setState(() {
@@ -275,7 +291,8 @@ class _MyAppState extends State<MyApp> {
                 },
                 child: const Text("picker model"),
               ),
-              if (_imageData != null) Image.memory(Uint8List.fromList(_imageData!)),
+              if (_imageData != null)
+                Image.memory(Uint8List.fromList(_imageData!)),
               Text('current status: $_status\n'),
               if (_isLoaded) buildGenerateWidgets(context),
             ],

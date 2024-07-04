@@ -15,12 +15,14 @@ class CoreMlStableDiffusionPlatform extends StableDiffusionPlatformInterface {
   }
 
   @override
-  PlatformStableDiffusionPipeline createPlatformPipeline(PlatformStableDiffusionPipelineCreationParams params) {
+  PlatformStableDiffusionPipeline createPlatformPipeline(
+      PlatformStableDiffusionPipelineCreationParams params) {
     return CoreMlStableDiffusionPipeline(params);
   }
 
   @override
-  PlatformStableDiffusionPipelineGenerateCancelToken createPlatformPipelineGenerateCancelToken() {
+  PlatformStableDiffusionPipelineGenerateCancelToken
+      createPlatformPipelineGenerateCancelToken() {
     return CoreMlStableDiffusionGenerateCancelToken();
   }
 }

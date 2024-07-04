@@ -17,10 +17,10 @@ class App with DependencyInjectionService {
 
   void run() {
     runApp(
-      MaterialApp(
-        home: MvcRootcDependencyServiceProvider(
-          serviceProvider: serviceProvider,
-          child: Mvc(create: () => IndexPageController()),
+      MvcApp(
+        serviceProvider: serviceProvider,
+        child: MaterialApp(
+          home: Mvc(create: () => IndexPageController()),
         ),
       ),
     );

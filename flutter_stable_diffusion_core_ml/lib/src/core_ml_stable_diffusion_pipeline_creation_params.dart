@@ -7,7 +7,8 @@ enum CoreMlComputeUnits {
   cpuAndNeuralEngine;
 }
 
-class CoreMlStableDiffusionPipelineCreationParams extends PlatformStableDiffusionPipelineCreationParams {
+class CoreMlStableDiffusionPipelineCreationParams
+    extends PlatformStableDiffusionPipelineCreationParams {
   CoreMlStableDiffusionPipelineCreationParams({
     required super.modelPath,
     this.reduceMemory = false,

@@ -31,7 +31,7 @@ class IndexPageController extends MvcController {
     if (models?.isNotEmpty == true) {
       switchModel(models!.first);
     } else {
-      $("#models").update();
+      querySelector("#models")?.update();
     }
   }
 
@@ -39,7 +39,7 @@ class IndexPageController extends MvcController {
     selectedModel = model;
     switchingModel = true;
     updateError();
-    $("#models").update();
+    querySelector("#models")?.update();
     await Future.wait(
       [
         _generator.cancel(),
@@ -48,7 +48,7 @@ class IndexPageController extends MvcController {
       ],
     );
     switchingModel = false;
-    $("#models").update();
+    querySelector("#models")?.update();
     if (_downloader.downloaded) {
       await _loader.load();
     }
@@ -97,8 +97,8 @@ class IndexPageController extends MvcController {
   }
 
   @override
-  void initService(ServiceCollection collection) {
-    super.initService(collection);
+  void initServices(ServiceCollection collection) {
+    super.initServices(collection);
     collection.addSingleton((serviceProvider) => IndexPageModelDownloader());
     collection.addSingleton((serviceProvider) => IndexPageModelLoader());
     collection.addSingleton((serviceProvider) => IndexPageGenerator());
@@ -111,7 +111,7 @@ class IndexPageController extends MvcController {
   }
 
   @override
-  MvcView<MvcController, dynamic> view() {
+  MvcView view() {
     return IndexPage();
   }
 }

@@ -9,7 +9,8 @@ import 'core_ml_stable_diffusion_pipeline_generate_params.dart';
 
 class CoreMlStableDiffusionPipeline implements PlatformStableDiffusionPipeline {
   CoreMlStableDiffusionPipeline(this.creationParams);
-  late final PlatformObjectChannel platformObjectChannel = PlatformObjectChannel(
+  late final PlatformObjectChannel platformObjectChannel =
+      PlatformObjectChannel(
     'CoreMlStableDiffusionPipeline',
     {
       "modelPath": creationParams.modelPath,
@@ -30,10 +31,12 @@ class CoreMlStableDiffusionPipeline implements PlatformStableDiffusionPipeline {
   @override
   Future<PlatformStableDiffusionPipelineGenerateResult> generate(
     PlatformStableDiffusionPipelineGenerateParams params, {
-    void Function(PlatformStableDiffusionPipelineGenerateProgress progress)? onProgress,
+    void Function(PlatformStableDiffusionPipelineGenerateProgress progress)?
+        onProgress,
     PlatformStableDiffusionPipelineGenerateCancelToken? cancelToken,
   }) async {
-    assert(cancelToken == null || cancelToken is CoreMlStableDiffusionGenerateCancelToken);
+    assert(cancelToken == null ||
+        cancelToken is CoreMlStableDiffusionGenerateCancelToken);
     await for (var element in platformObjectChannel.invokeMethodStream(
       "generate",
       {
@@ -46,7 +49,11 @@ class CoreMlStableDiffusionPipeline implements PlatformStableDiffusionPipeline {
           "guidanceScale": params.guidanceScale,
           "disableSafety": params.disableSafety,
         },
-        if (cancelToken != null) "cancelToken": (cancelToken as CoreMlStableDiffusionGenerateCancelToken).platformObjectChannel.ref,
+        if (cancelToken != null)
+          "cancelToken":
+              (cancelToken as CoreMlStableDiffusionGenerateCancelToken)
+                  .platformObjectChannel
+                  .ref,
       },
     )) {
       if (element is Map) {
@@ -55,12 +62,15 @@ class CoreMlStableDiffusionPipeline implements PlatformStableDiffusionPipeline {
             PlatformStableDiffusionPipelineGenerateProgress(
               step: element["step"],
               stepCount: element["stepCount"],
-              currentImages: (element["currentImages"] as List?)?.map((e) => e as List<int>).toList(),
+              currentImages: (element["currentImages"] as List?)
+                  ?.whereType<List<int>>()
+                  .toList(),
             ),
           );
         } else if (element["event"] == "done") {
           if (element["isCancel"] == true) {
-            return CoreMlStableDiffusionPipelineGenerateResult(isSuccess: false, isCancelled: true);
+            return CoreMlStableDiffusionPipelineGenerateResult(
+                isSuccess: false, isCancelled: true);
           } else if (element["image"] is List<int>) {
             return CoreMlStableDiffusionPipelineGenerateResult(
               isSuccess: true,

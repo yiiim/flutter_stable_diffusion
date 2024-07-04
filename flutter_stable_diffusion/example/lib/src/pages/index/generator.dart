@@ -48,7 +48,7 @@ class IndexPageGenerator with DependencyInjectionService, MvcService {
         const Duration(seconds: 1),
         (timer) {
           generateTimingText = "${DateTime.now().difference(startTime).inSeconds}s";
-          $("#generateTimingText").update();
+          querySelector("#generateTimingText")?.update();
         },
       );
       _cancelToken = FlutterStableDiffusionPipelineGenerateCancelToken();
@@ -61,7 +61,7 @@ class IndexPageGenerator with DependencyInjectionService, MvcService {
             generateImage = Uint8List.fromList(progress.currentImages!.last);
           }
           update();
-          $("#generateProgressText").update();
+          querySelector("#generateProgressText")?.update();
         },
       );
       if (result.isSuccess) {

@@ -30,9 +30,9 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   flutter_stable_diffusion_core_ml: 996f5a9454648f379509627c59af1b23f573d761
   FlutterMacOS: 8f6f14fa908a6fb3fba0cd85dbd81ec4b251fb24
-  path_provider_foundation: 29f094ae23ebbca9d3d0cec13889cd9060c0e943
+  path_provider_foundation: 2b6b4c569c0fb62ec74538f866245ac84301af46
   platform_object_channel_foundation: aeb00a626b0f22f1f7e143b7c47d4a9ee256b58a
 
 PODFILE CHECKSUM: 31ab3a79e195596ab2ca8e40d6236987a8a09e1a
 
-COCOAPODS: 1.12.0
+COCOAPODS: 1.14.2
